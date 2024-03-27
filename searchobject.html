@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <label for="specification">Enter Specification:</label>
+        <input type="text" id="specification">
+        <button onclick="searchSpecification()">Search</button>
+    </div>
+    <script>
+        // Define the product object representing a laptop
+        const product = {
+            name: "Laptop",
+            brand: "Dell",
+            price: 999.99,
+            specifications: {
+                processor: "Intel Core i7",
+                memory: "16GB RAM",
+                storage: "512GB SSD"
+            },
+            // Function to search for a specification
+            searchSpecification: function(spec) {
+                // Check if the specification exists
+                if (this.specifications.hasOwnProperty(spec)) {
+                    return this.specifications[spec];
+                } else {
+                    return "Specification not found";
+                }
+            },
+            // Function to display information about the product
+            displayInfo: function() {
+                console.log("Product: " + this.name);
+                console.log("Brand: " + this.brand);
+                console.log("Price: $" + this.price);
+                console.log("Specifications:");
+                console.log("  Processor: " + this.specifications.processor);
+                console.log("  Memory: " + this.specifications.memory);
+                console.log("  Storage: " + this.specifications.storage);
+            }
+        };
+
+        // Function to handle the search button click
+        function searchSpecification() {
+            const specInput = document.getElementById("specification").value;
+            const result = product.searchSpecification(specInput);
+            console.log(result);
+            document.write(result);
+        }
+
+        // Call the displayInfo function for the product
+        product.displayInfo();
+    </script>
+</body>
+</html>
